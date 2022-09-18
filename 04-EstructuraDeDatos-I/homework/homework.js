@@ -15,10 +15,22 @@ Como ejercicio adicional y completamente opcional, al terminar de resolver este 
 */
 
 function nFactorial(n) {
+  if (n < 0) {
+    return "numero no valido";
+  }else if (n === 0 || n === 1) {
+    return 1;
+  } 
+  return n * nFactorial(n - 1)
 }
 
+//0, 1, 1, 2, 3, 5, 8, 13, 21
+
 function nFibonacci(n) {
+  if (n === 0 || n === 1) return n;
+  return nFibonacci(n - 2) + nFibonacci(n - 1)
+
 }
+console.log(nFibonacci(7));
 
 /*
 Implementar la clase Queue, sabiendo que es una estructura de tipo FIFO, donde el primer elemento que ingresa es el primero que se quita. Definir los siguientes métodos:
@@ -28,10 +40,32 @@ Implementar la clase Queue, sabiendo que es una estructura de tipo FIFO, donde e
 
 Pueden utilizar class o función constructora.
 */
+//             
+    
 
-function Queue() {
+class Queue {
+  constructor() {
 
+    this.queue = [];
+
+  }
+  enqueue(ele) {
+    this.queue.unshift(ele);
+  }
+  dequeue() {
+    if (this.queue.length === 0) {
+      return undefined;
+    } else { return this.queue.pop(); };
+  }
+  size() {
+    return this.queue.length;
+  }
 }
+
+
+
+  
+
 
 // No modifiquen nada debajo de esta linea
 // --------------------------------
@@ -41,3 +75,30 @@ module.exports = {
   nFactorial,
   nFibonacci
 };
+
+/*
+
+function Stack(){
+    this.array = [1, 2, 3];
+}
+
+Stack.prototype.ingresar = function(num){
+    this.array.push(num)
+}
+
+Stack.prototype.sacar = function(){
+    return this.array.pop();
+}
+
+
+let stack2 = new Stack()
+
+stack2.ingresar(2)
+stack2.ingresar(5)
+stack2.ingresar(1)
+stack2.ingresar(7)
+console.log(stack2)
+stack2.sacar()
+console.log(stack2)
+stack2.shift()
+*/
